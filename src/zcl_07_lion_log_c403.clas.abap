@@ -1,0 +1,28 @@
+CLASS zcl_07_lion_log_c403 DEFINITION INHERITING FROM zcl_06_animal_log_c403
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+
+    METHODS:
+      walk REDEFINITION,
+      eat.
+
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zcl_07_lion_log_c403 IMPLEMENTATION.
+
+  METHOD walk.
+    rv_walk = 'The lion walks'.
+  ENDMETHOD.
+
+  METHOD eat.
+
+  ENDMETHOD.
+
+ENDCLASS.

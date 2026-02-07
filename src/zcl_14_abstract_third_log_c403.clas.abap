@@ -1,0 +1,20 @@
+CLASS zcl_14_abstract_third_log_c403 DEFINITION
+  PUBLIC
+  INHERITING FROM zcl_13_abstract_child_log_c403
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    METHODS: abstract_method REDEFINITION.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zcl_14_abstract_third_log_c403 IMPLEMENTATION.
+  METHOD abstract_method.
+
+  ENDMETHOD.
+
+ENDCLASS.

@@ -95,29 +95,60 @@ CLASS zcl_01_exec_log_c403 IMPLEMENTATION.
 *
 *  "lo_heritance->architecture = '32 bits'.
 
-* Narrowing Cast --> UP cast
-    DATA(lo_animal) = NEW zcl_06_animal_log_c403( ).
-    DATA(lo_lion) = NEW zcl_07_lion_log_c403( ).
+** Narrowing Cast --> UP cast
+*    DATA(lo_animal) = NEW zcl_06_animal_log_c403( ).
+*    DATA(lo_lion) = NEW zcl_07_lion_log_c403( ).
+*
+*    out->write( lo_animal->walk( ) ).
+*    out->write( lo_lion->walk( ) ).
+*
+*    lo_animal = lo_lion.
+*
+*    out->write( 'Narrowing (Up cast)' ).
+*    out->write( lo_animal->walk( ) ).
+*
+** Widening cast --> Down Cast
+*    TRY.
+*        lo_lion ?= lo_animal.
+*      CATCH cx_sy_move_cast_error.
+*    ENDTRY.
+*
+*    out->write( 'Widening (Down cast)' ).
+*    out->write( lo_animal->walk( ) ).
+*    out->write( lo_lion->walk( ) ).
 
-    out->write( lo_animal->walk( ) ).
-    out->write( lo_lion->walk( ) ).
-
-    lo_animal = lo_lion.
-
-    out->write( 'Narrowing (Up cast)' ).
-    out->write( lo_animal->walk( ) ).
-
-* Widening cast --> Down Cast
-    TRY.
-        lo_lion ?= lo_animal.
-      CATCH cx_sy_move_cast_error.
-    ENDTRY.
-
-    out->write( 'Widening (Down cast)' ).
-    out->write( lo_animal->walk( ) ).
-    out->write( lo_lion->walk( ) ).
+* Instances encapsulation
+* data(lo_encap) = new zcl_09_friends_her_log_c403( ).
+*
+* lo_encap->get_friend_data( ).
 
 
+** Interfaces
+*  data(lo_interf) = new zcl_11_interfaces_log_c403( ).
+*
+*  "lo_interf->zif_01_log_c403~set_conn_id( '0001' ).
+*  lo_interf->set_conn_id( '0001' ).
+*
+*  out->write( lo_interf->zif_01_log_c403~get_conn_id( ) ).
+*
+*  out->write( lo_interf->zif_02_log_c403~get_customer( '000004' ) ).
+
+
+* Polymorphism
+    DATA: lt_airplanes TYPE STANDARD TABLE OF REF TO zcl_15_airplane_log_c403,
+          lo_airplane  TYPE REF TO zcl_15_airplane_log_c403,
+          lo_cargo     TYPE REF TO zcl_16_cargo_plane_log_c403,
+          lo_pass      TYPE REF TO zcl_17_pass_plane_log_c403.
+
+    lo_cargo = NEW #( ).
+    APPEND lo_cargo TO lt_airplanes.
+
+    lo_pass = NEW #( ).
+    APPEND lo_pass TO lt_airplanes.
+
+    LOOP AT lt_airplanes INTO lo_airplane.
+      out->write( lo_airplane->airplane_type( ) ).
+    ENDLOOP.
 
 
 

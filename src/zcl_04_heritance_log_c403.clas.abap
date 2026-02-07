@@ -10,7 +10,9 @@ CLASS zcl_04_heritance_log_c403 DEFINITION
 
     METHODS:
       constructor,
-      get_architecture RETURNING VALUE(rv_architecture) TYPE string.
+      get_architecture RETURNING VALUE(rv_architecture) TYPE string,
+      set_memory FINAL
+        IMPORTING iv_attr TYPE string.
 
   PROTECTED SECTION.
     "DATA: architecture TYPE string VALUE '64 bits'.
@@ -29,6 +31,10 @@ CLASS zcl_04_heritance_log_c403 IMPLEMENTATION.
 
   METHOD constructor.
     me->architecture = '64 bits'.
+  ENDMETHOD.
+
+  METHOD set_memory.
+
   ENDMETHOD.
 
 ENDCLASS.

@@ -8,6 +8,7 @@ CLASS zcl_05_heritance_log_c403 DEFINITION INHERITING FROM zcl_04_heritance_log_
     METHODS:
       constructor,
       get_architecture REDEFINITION.
+      "set_memory REDEFINITION.
 
   PROTECTED SECTION.
   PRIVATE SECTION.

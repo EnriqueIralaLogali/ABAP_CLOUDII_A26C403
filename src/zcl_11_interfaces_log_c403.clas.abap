@@ -18,7 +18,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_11_interfaces_log_c403 IMPLEMENTATION.
+CLASS ZCL_11_INTERFACES_LOG_C403 IMPLEMENTATION.
+
 
   METHOD get_conn_id.
 
@@ -26,11 +27,13 @@ CLASS zcl_11_interfaces_log_c403 IMPLEMENTATION.
 
   ENDMETHOD.
 
+
   METHOD set_conn_id.
 
     me->zif_01_log_c403~conn_id = iv_conn_id.
 
   ENDMETHOD.
+
 
   METHOD get_customer.
 
@@ -41,8 +44,8 @@ CLASS zcl_11_interfaces_log_c403 IMPLEMENTATION.
 
   ENDMETHOD.
 
+
   METHOD zif_03_log_c403~get_airports.
 
   ENDMETHOD.
-
 ENDCLASS.

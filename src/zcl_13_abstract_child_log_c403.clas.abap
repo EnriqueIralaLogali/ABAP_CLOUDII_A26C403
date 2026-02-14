@@ -14,14 +14,15 @@ ENDCLASS.
 
 
 
-CLASS zcl_13_abstract_child_log_c403 IMPLEMENTATION.
+CLASS ZCL_13_ABSTRACT_CHILD_LOG_C403 IMPLEMENTATION.
+
 
   METHOD input_products.
     rv_input = 'input products'.
   ENDMETHOD.
 
+
   METHOD production_line.
     rv_production = 'Production line'.
   ENDMETHOD.
-
 ENDCLASS.

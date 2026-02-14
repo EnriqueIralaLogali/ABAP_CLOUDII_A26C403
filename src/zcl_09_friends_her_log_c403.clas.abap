@@ -16,7 +16,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_09_friends_her_log_c403 IMPLEMENTATION.
+CLASS ZCL_09_FRIENDS_HER_LOG_C403 IMPLEMENTATION.
+
 
   METHOD get_friend_data.
 
@@ -27,5 +28,4 @@ CLASS zcl_09_friends_her_log_c403 IMPLEMENTATION.
     lo_friend->warehouse = 'Main Warehouse'.
 
   ENDMETHOD.
-
 ENDCLASS.

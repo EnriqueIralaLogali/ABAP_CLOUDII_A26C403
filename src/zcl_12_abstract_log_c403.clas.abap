@@ -23,10 +23,10 @@ ENDCLASS.
 
 
 
-CLASS zcl_12_abstract_log_c403 IMPLEMENTATION.
+CLASS ZCL_12_ABSTRACT_LOG_C403 IMPLEMENTATION.
+
 
   METHOD merchandise_output.
     rv_merchadise = 'Mechandise output'.
   ENDMETHOD.
-
 ENDCLASS.

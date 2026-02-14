@@ -11,7 +11,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_10_friends_child_log_c403 IMPLEMENTATION.
+CLASS ZCL_10_FRIENDS_CHILD_LOG_C403 IMPLEMENTATION.
+
 
   METHOD get_private_data.
 
@@ -26,5 +27,4 @@ CLASS zcl_10_friends_child_log_c403 IMPLEMENTATION.
    lo_friend->warehouse = 'Child Warehouse'.
 
   ENDMETHOD.
-
 ENDCLASS.

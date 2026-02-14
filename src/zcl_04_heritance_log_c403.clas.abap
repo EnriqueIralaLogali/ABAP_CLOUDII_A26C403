@@ -23,18 +23,20 @@ ENDCLASS.
 
 
 
-CLASS zcl_04_heritance_log_c403 IMPLEMENTATION.
+CLASS ZCL_04_HERITANCE_LOG_C403 IMPLEMENTATION.
+
 
   METHOD get_architecture.
     rv_architecture = me->architecture.
   ENDMETHOD.
 
+
   METHOD constructor.
     me->architecture = '64 bits'.
   ENDMETHOD.
 
+
   METHOD set_memory.
 
   ENDMETHOD.
-
 ENDCLASS.

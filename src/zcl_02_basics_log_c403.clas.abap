@@ -69,24 +69,29 @@ ENDCLASS.
 
 
 
-CLASS zcl_02_basics_log_c403 IMPLEMENTATION.
+CLASS ZCL_02_BASICS_LOG_C403 IMPLEMENTATION.
+
 
   METHOD set_attr.
     me->attr1 = attr1.
     me->company = 'otro valor'.
   ENDMETHOD.
 
+
   METHOD set_attr2.
     attr2 = iv_attr2.
   ENDMETHOD.
+
 
   METHOD get_attr.
     attr1 = me->attr1.
   ENDMETHOD.
 
+
   METHOD get_attr2.
     ev_attr2 = attr2.
   ENDMETHOD.
+
 
   METHOD get_flights.
 
@@ -112,6 +117,7 @@ CLASS zcl_02_basics_log_c403 IMPLEMENTATION.
 
   ENDMETHOD.
 
+
   METHOD get_flight.
 
     SELECT SINGLE FROM /dmo/travel
@@ -122,5 +128,4 @@ CLASS zcl_02_basics_log_c403 IMPLEMENTATION.
      INTO @rs_flight.
 
   ENDMETHOD.
-
 ENDCLASS.

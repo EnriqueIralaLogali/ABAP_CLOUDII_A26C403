@@ -12,14 +12,15 @@ ENDCLASS.
 
 
 
-CLASS zcl_17_pass_plane_log_c403 IMPLEMENTATION.
+CLASS ZCL_17_PASS_PLANE_LOG_C403 IMPLEMENTATION.
+
 
   METHOD airplane_type.
     rv_airplane_type = 'Passenger Plane'.
   ENDMETHOD.
 
+
   METHOD discount.
 
   ENDMETHOD.
-
 ENDCLASS.

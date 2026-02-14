@@ -16,7 +16,8 @@ ENDCLASS.
 
 
 
-CLASS zcl_05_heritance_log_c403 IMPLEMENTATION.
+CLASS ZCL_05_HERITANCE_LOG_C403 IMPLEMENTATION.
+
 
   METHOD get_architecture.
 
@@ -31,6 +32,7 @@ CLASS zcl_05_heritance_log_c403 IMPLEMENTATION.
     super->get_architecture( ).
   ENDMETHOD.
 
+
   METHOD constructor.
 
     super->constructor( ).
@@ -38,5 +40,4 @@ CLASS zcl_05_heritance_log_c403 IMPLEMENTATION.
     "me->architecture = '32 bits'.
 
   ENDMETHOD.
-
 ENDCLASS.

@@ -19,14 +19,15 @@ ENDCLASS.
 
 
 
-CLASS zcl_03_instances_log_c403 IMPLEMENTATION.
+CLASS ZCL_03_INSTANCES_LOG_C403 IMPLEMENTATION.
+
 
   METHOD class_constructor.
     log = |{ log } static constructor -->|.
   ENDMETHOD.
 
+
   METHOD constructor.
     log = |{ log } instance constructor -->|.
   ENDMETHOD.
-
 ENDCLASS.

@@ -244,10 +244,76 @@ CLASS zcl_01_exec_log_c403 IMPLEMENTATION.
 *      ENDIF.
 *    ENDDO.
 
-  data(lv_result) = 5 / 0.
+* Exemptions
 
+*    DATA: lv_result TYPE i,
+*          lv_num1   TYPE i VALUE 20,
+*          lv_num2   TYPE i.
+*
+*    DATA: lx_auth TYPE REF TO cx_root.
+*
+*    DATA(lo_auth) = NEW zcl_31_manage_cntrl_log_c403( ).
+*
+*    TRY.
+*
+*        lv_result = lv_num1 / lv_num2.
+*        lo_auth->check_user( sy-uname ).
+*
+*
+*      CATCH cx_sy_zerodivide INTO DATA(lx_div).
+*
+*        out->write( lx_div->get_text( ) ).
+*
+*        lv_num2 = 5.
+*        RETRY.
+*
+*      CATCH   zcx_01_auth_log_c403 INTO lx_auth .
+*        "out->write( 'Exception Handled' ).
+*        out->write( lx_auth->get_text( ) ).
+*    ENDTRY.
 
+* Patterns
 
+    "Singleton
+*  data: lo_singleton1 type ref to zcl_32_singleton_log_c403,
+*        lo_singleton2 type ref to zcl_32_singleton_log_c403.
+*
+*     lo_singleton1 = zcl_32_singleton_log_c403=>get_instance( ).
+*
+*     wait up to 2 seconds.
+*
+*     lo_singleton2 = zcl_32_singleton_log_c403=>get_instance( ).
+*
+*     out->write( lo_singleton1->time ).
+*     out->write( lo_singleton2->time ).
+
+    " Factory Method
+*    DATA: lo_shape   TYPE REF TO zif_06_fm_log_c403,
+*          lo_factory TYPE REF TO zcl_36_factory_log_c403.
+*
+*    lo_factory = NEW #( ).
+*
+*    lo_shape = lo_factory->get_shape( 'Circle' ).
+*    out->write( lo_shape->draw_figure( ) ).
+
+    " Model - View - Controller
+    DATA: lv_name TYPE string VALUE 'Juan Lopez',
+          lv_role TYPE string VALUE 'Developer'.
+
+    DATA(lo_model) = NEW zcl_37_model_log_c403( iv_name = lv_name
+                                                iv_role = lv_role ).
+
+    DATA(lo_view) = NEW zcl_38_view_log_c403( ).
+
+    DATA(lo_controller) = NEW zcl_39_controller_log_c403( ).
+
+    lo_controller->set_model( lo_model ).
+    lo_controller->set_view( lo_view ).
+
+    lo_controller->get_view( )->display_employee(
+                                  iv_name = lo_model->get_name( )
+                                  iv_role = lo_model->get_role( )
+                                  io_out  = out ).
 
 
 

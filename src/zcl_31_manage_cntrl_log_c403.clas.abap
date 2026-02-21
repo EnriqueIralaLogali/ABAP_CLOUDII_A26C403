@@ -18,16 +18,16 @@ CLASS zcl_31_manage_cntrl_log_c403 IMPLEMENTATION.
 
   METHOD check_user.
 
-    IF sy-uname = 'xxxxxxx'.
+    IF sy-uname = 'CB9980001139'.
 
       RAISE EXCEPTION TYPE zcx_01_auth_log_c403
-*       EXPORTING
-*         textid   =
+        EXPORTING
+          textid = zcx_01_auth_log_c403=>no_auth
 *         previous =
-*         msgv1    =
-*         msgv2    =
-*         msgv3    =
-*         msgv4    =
+          msgv1  = |{ sy-uname }|
+          msgv2  = 'Edit Invoice'
+*         msgv3  =
+*         msgv4  =
         .
 
     ENDIF.

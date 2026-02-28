@@ -297,23 +297,37 @@ CLASS zcl_01_exec_log_c403 IMPLEMENTATION.
 *    out->write( lo_shape->draw_figure( ) ).
 
     " Model - View - Controller
-    DATA: lv_name TYPE string VALUE 'Juan Lopez',
-          lv_role TYPE string VALUE 'Developer'.
+*    DATA: lv_name TYPE string VALUE 'Juan Lopez',
+*          lv_role TYPE string VALUE 'Developer'.
+*
+*    DATA(lo_model) = NEW zcl_37_model_log_c403( iv_name = lv_name
+*                                                iv_role = lv_role ).
+*
+*    DATA(lo_view) = NEW zcl_38_view_log_c403( ).
+*
+*    DATA(lo_controller) = NEW zcl_39_controller_log_c403( ).
+*
+*    lo_controller->set_model( lo_model ).
+*    lo_controller->set_view( lo_view ).
+*
+*    lo_controller->get_view( )->display_employee(
+*                                  iv_name = lo_model->get_name( )
+*                                  iv_role = lo_model->get_role( )
+*                                  io_out  = out ).
 
-    DATA(lo_model) = NEW zcl_37_model_log_c403( iv_name = lv_name
-                                                iv_role = lv_role ).
+    " Observer
+    DATA(lo_processes) = NEW zcl_40_processes_log_c403( ).
+    DATA(lo_sales_dep) = NEW zcl_42_sales_dep_log_c403( ).
+    DATA(lo_billing_dep) = NEW zcl_43_billing_dep_log_c403( ).
 
-    DATA(lo_view) = NEW zcl_38_view_log_c403( ).
+    SET HANDLER lo_sales_dep->on_modified_state FOR lo_processes.
+    SET HANDLER lo_billing_dep->on_modified_state FOR lo_processes.
 
-    DATA(lo_controller) = NEW zcl_39_controller_log_c403( ).
-
-    lo_controller->set_model( lo_model ).
-    lo_controller->set_view( lo_view ).
-
-    lo_controller->get_view( )->display_employee(
-                                  iv_name = lo_model->get_name( )
-                                  iv_role = lo_model->get_role( )
-                                  io_out  = out ).
+    "Set new state
+    lo_processes->set_state( iv_state = 'NEWSALES01 - Product 23456 - Laptop Dell Sold' ).
+    out->write( lo_processes->get_state( ) ).
+    out->write( lo_sales_dep->state ).
+    out->write( lo_billing_dep->state ).
 
 
 

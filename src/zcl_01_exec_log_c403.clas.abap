@@ -315,20 +315,38 @@ CLASS zcl_01_exec_log_c403 IMPLEMENTATION.
 *                                  iv_role = lo_model->get_role( )
 *                                  io_out  = out ).
 
-    " Observer
-    DATA(lo_processes) = NEW zcl_40_processes_log_c403( ).
-    DATA(lo_sales_dep) = NEW zcl_42_sales_dep_log_c403( ).
-    DATA(lo_billing_dep) = NEW zcl_43_billing_dep_log_c403( ).
+*    " Observer
+*    DATA(lo_processes) = NEW zcl_40_processes_log_c403( ).
+*    DATA(lo_sales_dep) = NEW zcl_42_sales_dep_log_c403( ).
+*    DATA(lo_billing_dep) = NEW zcl_43_billing_dep_log_c403( ).
+*
+*    SET HANDLER lo_sales_dep->on_modified_state FOR lo_processes.
+*    SET HANDLER lo_billing_dep->on_modified_state FOR lo_processes.
+*
+*    "Set new state
+*    lo_processes->set_state( iv_state = 'NEWSALES01 - Product 23456 - Laptop Dell Sold' ).
+*    out->write( lo_processes->get_state( ) ).
+*    out->write( lo_sales_dep->state ).
+*    out->write( lo_billing_dep->state ).
 
-    SET HANDLER lo_sales_dep->on_modified_state FOR lo_processes.
-    SET HANDLER lo_billing_dep->on_modified_state FOR lo_processes.
+* CDS with Parameters
+*    SELECT FROM zcds_12_log_c403( pcountrycode = 'US' )
+*    FIELDS *
+*    INTO TABLE @DATA(lt_result).
+*
+*    out->write( lt_result ).
 
-    "Set new state
-    lo_processes->set_state( iv_state = 'NEWSALES01 - Product 23456 - Laptop Dell Sold' ).
-    out->write( lo_processes->get_state( ) ).
-    out->write( lo_sales_dep->state ).
-    out->write( lo_billing_dep->state ).
-
+  modify zemployee_lgl from table @( value #( ( employee = '1' manager = '' name = 'Name 1' )
+                                              ( employee = '2' manager = '1' name = 'Name 2' )
+                                              ( employee = '3' manager = '2' name = 'Name 3' )
+                                              ( employee = '4' manager = '2' name = 'Name 4' )
+                                              ( employee = '5' manager = '' name = 'Name 5' )
+                                              ( employee = '6' manager = '5' name = 'Name 6' )
+                                              ( employee = '7' manager = '5' name = 'Name 7' )
+                                              ( employee = '8' manager = '7' name = 'Name 8' )
+                                              ( employee = '9' manager = '8' name = 'Name 9' )
+                                              ( employee = '10' manager = '8' name = 'Name 10' )
+                                              ) ).
 
 
 

@@ -1,0 +1,26 @@
+@EndUserText.label: 'Access Control - Multiple Literal'
+@MappingRole: true
+define role ZAC_08_LOG_C403 {
+    grant
+        select
+            on
+                ZCDS_36_LOG_C403
+                    where
+                          CustomerId =  '000030'
+                       or CustomerId >  '000030'
+                       or CustomerId >= '000030' 
+                       or CustomerId <  '000030'
+                       or CustomerId <= '000030'
+                       or CustomerId <> '000030'
+                       or CustomerId ?=  '000030' // CustomerId = '000030' or CustomerId is initial
+                       or CustomerId is initial
+                       or CustomerId is not initial
+                       or CustomerId is null
+                       or CustomerId is not null
+                       or CustomerId between '000020' and '000030'
+                       or CustomerId not between '000020' and '000030'
+                       or CustomerId like '%2%'
+                       or CustomerId like '00002_'
+                       ;
+                        
+}

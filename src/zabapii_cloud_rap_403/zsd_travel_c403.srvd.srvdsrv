@@ -1,0 +1,8 @@
+@EndUserText.label: 'Travel - Service Definition'
+define service Zsd_travel_c403 {
+  expose ZTRAVEL_C_C403           as travel;
+  expose /DMO/I_Customer          as Passenger;
+  expose /DMO/I_Agency            as TravelAgency;
+  expose /DMO/I_Overall_Status_VH as OverallStatusVH;
+  expose I_Currency               as Currency;
+}

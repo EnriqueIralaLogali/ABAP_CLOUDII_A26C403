@@ -3,12 +3,12 @@
 @Metadata.ignorePropagatedAnnotations: true
 define root view entity zcds_24_log_c403
   as select from /dmo/travel
-
+  
   composition [0..*] of zcds_25_log_c403 as _Booking
-
-  association [1..1] to /DMO/I_Agency    as _Agency   on _Agency.AgencyID = $projection.AgencyId
-  association [1..1] to /DMO/I_Customer  as _Customer on _Customer.CustomerID = $projection.CustomerId
-
+  
+  association [1..1] to /DMO/I_Agency   as _Agency   on _Agency.AgencyID = $projection.AgencyId
+  association [1..1] to /DMO/I_Customer as _Customer on _Customer.CustomerID = $projection.CustomerId
+  
 {
   key travel_id     as TravelId,
       agency_id     as AgencyId,
@@ -26,7 +26,16 @@ define root view entity zcds_24_log_c403
       createdat     as Createdat,
       lastchangedby as Lastchangedby,
       lastchangedat as Lastchangedat,
-      _Booking,
-      _Agency,
-      _Customer // Make association public
+      
+      // Make association public
+        _Agency,
+        _Customer,
+        _Booking
+        
+        
+        
+        
+        
+        
+       
 }

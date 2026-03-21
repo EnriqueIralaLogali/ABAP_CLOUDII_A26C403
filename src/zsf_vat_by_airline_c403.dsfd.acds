@@ -1,0 +1,4 @@
+define scalar function zsf_vat_by_airline_c403
+  with parameters
+    pAirline: abap.char( 3 )
+  returns abap.dec( 16, 2 )

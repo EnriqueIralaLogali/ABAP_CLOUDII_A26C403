@@ -1,0 +1,14 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Scalar funtion Imp reference",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "scalarFunctionName": "ZSF_VAT_BY_AIRLINE_C403",
+  "engine": "sqlEngine",
+  "sqlProperties": {
+    "amdpReference": "zcl_scalar_functions_c403=>vat_by_airline",
+    "autoExposedInSqlServices": false
+  }
+}

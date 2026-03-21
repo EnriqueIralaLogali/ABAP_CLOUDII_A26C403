@@ -336,19 +336,33 @@ CLASS zcl_01_exec_log_c403 IMPLEMENTATION.
 *
 *    out->write( lt_result ).
 
-  modify zemployee_lgl from table @( value #( ( employee = '1' manager = '' name = 'Name 1' )
-                                              ( employee = '2' manager = '1' name = 'Name 2' )
-                                              ( employee = '3' manager = '2' name = 'Name 3' )
-                                              ( employee = '4' manager = '2' name = 'Name 4' )
-                                              ( employee = '5' manager = '' name = 'Name 5' )
-                                              ( employee = '6' manager = '5' name = 'Name 6' )
-                                              ( employee = '7' manager = '5' name = 'Name 7' )
-                                              ( employee = '8' manager = '7' name = 'Name 8' )
-                                              ( employee = '9' manager = '8' name = 'Name 9' )
-                                              ( employee = '10' manager = '8' name = 'Name 10' )
-                                              ) ).
+*  modify zemployee_lgl from table @( value #( ( employee = '1' manager = '' name = 'Name 1' )
+*                                              ( employee = '2' manager = '1' name = 'Name 2' )
+*                                              ( employee = '3' manager = '2' name = 'Name 3' )
+*                                              ( employee = '4' manager = '2' name = 'Name 4' )
+*                                              ( employee = '5' manager = '' name = 'Name 5' )
+*                                              ( employee = '6' manager = '5' name = 'Name 6' )
+*                                              ( employee = '7' manager = '5' name = 'Name 7' )
+*                                              ( employee = '8' manager = '7' name = 'Name 8' )
+*                                              ( employee = '9' manager = '8' name = 'Name 9' )
+*                                              ( employee = '10' manager = '8' name = 'Name 10' )
+*                                              ) ).
 
-
+* cl_dd_ddl_annotation_service=>get_annos(
+*   EXPORTING
+*     entityname         = 'ZCDS_39_LOG_C403'
+**     variant            = ''
+**     language           = SY-LANGU
+**     extend             = abap_false
+**     metadata_extension = abap_true
+**     translation        = abap_true
+**     null_values        = abap_false
+*   IMPORTING
+**     entity_annos       =
+*     element_annos      = data(lt_element_annos)
+**     parameter_annos    =
+**     annos_tstmp        =
+* ).
 
 
 

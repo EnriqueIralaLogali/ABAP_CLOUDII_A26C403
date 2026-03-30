@@ -1,0 +1,14 @@
+managed implementation in class zbp_travel_r_c403 unique;
+strict ( 2 );
+
+define behavior for ztravel_r_c403 //alias <alias_name>
+persistent table ztravel_c403_a
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) TravelUuid;
+}

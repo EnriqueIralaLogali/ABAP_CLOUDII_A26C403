@@ -1,0 +1,22 @@
+interface;
+use draft;
+
+define behavior for ZTRAVEL_I_C403 alias Travel
+{
+  use create;
+  use update;
+  use delete;
+
+  use action acceptTravel;
+  use action rejectTravel;
+  use action deductDiscount;
+  use action validateCustomerID;
+  use action validateAgencyID;
+  use action validateDates;
+
+  use action resume;
+  use action edit;
+  use action activate;
+  use action discard;
+  use action prepare;
+}

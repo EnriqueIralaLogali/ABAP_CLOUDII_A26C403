@@ -1,14 +1,91 @@
 managed implementation in class zbp_travel_r_c403 unique;
 strict ( 2 );
+with draft;
 
-define behavior for ztravel_r_c403 //alias <alias_name>
+define behavior for ztravel_r_c403 alias Travel
 persistent table ztravel_c403_a
+draft table ztravel_c403_d
 lock master
-authorization master ( instance )
-//etag master <field_name>
+total etag LastChangedAt
+etag master LocalLastChangedAt
+authorization master ( global, instance )
 {
-  create ( authorization : global );
+  create;
   update;
   delete;
-  field ( readonly ) TravelUuid;
+
+  field ( numbering : managed, readonly ) TravelUuid;
+
+  field ( readonly ) TravelId,
+  OverallStatus,
+  TotalPrice,
+  LastChangedAt,
+  LocalCreatedAt,
+  LocalCreatedBy,
+  LocalLastChangedBy;
+
+  field ( features : instance ) BookingFee;
+
+  field ( mandatory ) CustomerId, AgencyId, BeginDate, EndDate, CurrencyCode;
+
+  action ( features : instance, authorization : update ) acceptTravel result [1] $self;
+  action ( features : instance, authorization : update ) rejectTravel result [1] $self;
+
+  action ( features : instance, authorization : update ) deductDiscount
+    parameter zae_travel_dis_c403 result [1] $self;
+
+  internal action reCalcTotalPrice;
+
+  validation validateCustomer on save { create; field CustomerId; }
+  validation validateAgency on save { create; field AgencyId; }
+  validation validateDateRange on save { create; field BeginDate, EndDate; }
+
+  determination setTravelNumber on save { create; }
+  determination setStatusToOpen on modify { create; }
+  determination calculateTotalPrice on modify { create; field BookingFee, CurrencyCode; }
+
+  determine action validateCustomerID { validation validateCustomer; }
+  determine action validateAgencyID { validation validateAgency; }
+  determine action validateDates { validation validateDateRange; }
+
+  side effects
+  {
+    field BookingFee affects field TotalPrice;
+    determine action validateCustomerID executed on field CustomerId affects messages;
+    determine action validateAgencyID executed on field AgencyId affects messages;
+    determine action validateDates executed on field BeginDate, field EndDate affects messages;
+  }
+
+  draft action resume;
+  draft action edit;
+  draft action activate optimized;
+  draft action discard;
+
+  draft determine action prepare
+  {
+    validation validateCustomer;
+    validation validateAgency;
+    validation validateDateRange;
+  }
+
+  mapping for ztravel_c403_a
+    {
+      traveluuid         = travel_uuid;
+      travelid           = travel_id;
+      agencyid           = agency_id;
+      customerid         = customer_id;
+      begindate          = begin_date;
+      enddate            = end_date;
+      bookingfee         = booking_fee;
+      totalprice         = total_price;
+      currencycode       = currency_code;
+      description        = description;
+      overallstatus      = overall_status;
+      localcreatedby     = local_created_by;
+      localcreatedat     = local_created_at;
+      locallastchangedby = local_last_changed_by;
+      locallastchangedat = local_last_changed_at;
+      lastchangedat      = last_changed_at;
+    }
+
 }

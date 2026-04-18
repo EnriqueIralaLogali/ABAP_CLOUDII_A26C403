@@ -116,7 +116,7 @@ annotate entity ZTRAVEL_C_C403 with
                       importance: #MEDIUM }],
          identification: [{ position: 71 }]
        }
-  pricewithvat;
+  PriceWithVat;
 
   @Consumption.valueHelpDefinition: [{ entity: { name : 'I_CurrencyStdVH',
                                                  element: 'Currency' },
@@ -138,7 +138,7 @@ annotate entity ZTRAVEL_C_C403 with
   OverallStatus;
 
   @UI.hidden: true
-  overallstatustext;
+  OverallStatusText;
 
   @UI.hidden: true
   LastChangedAt;
